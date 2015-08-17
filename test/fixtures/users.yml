@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  card: MyString
+  registration_date: 2015-07-08 15:19:18
+
+two:
+  card: MyString
+  registration_date: 2015-07-08 15:19:18

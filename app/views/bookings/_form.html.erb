@@ -1,0 +1,138 @@
+<%= form_for(@booking) do |f| %>
+  <% if @booking.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
+
+      <ul>
+      <% @booking.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+
+  <div class="field" style="color:FireBrick">
+    <%= f.label :date %><br />
+    <%= f.datetime_select :date %>
+  </div>
+  <br>
+  <div class="field" style="color:FireBrick">
+    <!--<%= f.label :trip_departure %><br />
+    <%= f.text_field :trip_departure %>-->
+    <label for="trip_departure">Departure</label><br />
+    <select name="booking[trip_departure]">
+      <option selected="selected" value="Select">Select</option>
+      <option value="Ancona">Ancona</option>
+      <option value="Bari C.le">Bari C.le</option>
+      <option value="Bologna C.le">Bologna C.le</option>
+      <option value="Brindisi">Brindisi</option>
+      <option value="Firenze(Santa Maria Novella)">Firenze Santa Maria Novella</option>
+      <option value="Foggia">Foggia</option>
+      <option>Mantova</option>
+      <option>Milano C.le</option>
+      <option>Modena</option>
+      <option>Piacenza</option>
+      <option>Reggio Calbria</option>
+      <option>Reggio Emilia</option>
+      <option>San Benedetto Del Tronto</option>
+      <option>Venezia S.Lucia</option>
+      <option>Verona Porta Nuova</option>
+      <option>San Benedetto Del Tronto</option>
+      
+    </select>
+    <!--<select name="trip_departure[booking_id]">
+      <option>Select</option>
+      <option>Ancona</option>
+      <option>Bari C.le</option>
+      <option>Bologna C.le</option>
+      <option>Brindisi</option>
+      <option>Firenze Santa Maria Novella</option>
+      <option>Foggia</option>
+      <option>Mantova</option>
+      <option>Milano C.le</option>
+      <option>Modena</option>
+      <option>Piacenza</option>
+      <option>Reggio Calbria</option>
+      <option>Reggio Emilia</option>
+      <option>Venezia S.Lucia</option>
+      <option>Verona Porta Nuova</option>
+      <option>San Benedetto Del Tronto</option>
+    </select>-->
+  </div>
+</br>
+  <div class="field" style="color:FireBrick">
+    <label for="trip_destination">Destination</label><br />
+    <select name="booking[trip_destination]">
+      <option selected="selected" value="Select">Select</option>
+      <option value="Ancona">Ancona</option>
+      <option value="Bari C.le">Bari C.le</option>
+      <option value="Bologna C.le">Bologna C.le</option>
+      <option value="Brindisi">Brindisi</option>
+      <option value="Firenze(Santa Maria Novella)">Firenze Santa Maria Novella</option>
+      <option value="Foggia">Foggia</option>
+      <option>Mantova</option>
+      <option>Milano C.le</option>
+      <option>Modena</option>
+      <option>Piacenza</option>
+      <option>Reggio Calbria</option>
+      <option>Reggio Emilia</option>
+      <option>San Benedetto Del Tronto</option>
+      <option>Venezia S.Lucia</option>
+      <option>Verona Porta Nuova</option>
+      <option>San Benedetto Del Tronto</option>
+    </select>
+    <!--<%= f.label :trip_destination %><br />
+    <%= f.text_field :trip_destination %>
+    <select name="trip_destination">
+      <option>Select</option>
+      <option>Ancona</option>
+      <option>Bari C.le</option>
+      <option>Bologna C.le</option>
+      <option>Brindisi</option>
+      <option>Firenze Santa Maria Novella</option>
+      <option>Foggia</option>
+      <option>Mantova</option>
+      <option>Milano C.le</option>
+      <option>Modena</option>
+      <option>Piacenza</option>
+      <option>Reggio Calbria</option>
+      <option>Reggio Emilia</option>
+      <option>Venezia S.Lucia</option>
+      <option>Verona Porta Nuova</option>
+      <option>San Benedetto Del Tronto</option>
+    </select>  -->  
+  </div>
+  </div>
+</br>
+  <div class="field" style="color:FireBrick">
+    <label for="seats_class">Seats Class</label><br />
+    <select name="booking[seats_class]">
+      <option selected="selected" value="Select">Select</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select> 
+  </div>
+</br>
+  <div class="field" style="color:FireBrick">
+    <label for="n_peole">People</label> <br />
+    <select name="booking[n_people]">
+      <option selected>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+    </select>
+  </div>
+  
+  <% if current_user.present? %>
+    </br>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+  <% end %>
+<% end %>

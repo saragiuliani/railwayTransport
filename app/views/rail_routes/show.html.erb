@@ -1,0 +1,26 @@
+<</br>
+<br>
+<font size="3"> <%= link_to "HOME", home_path %> </font>
+<p>
+<b>Departure:</b>
+  <%= @rail_route.departure %>
+</p>
+
+<p>
+  <b>Destination:</b>
+  <%= @rail_route.destination %>
+</p>
+
+<p>
+  <b>D time:</b>
+  <%= @rail_route.d_time %>
+</p>
+
+<p>
+  <b>A time:</b>
+  <%= @rail_route.a_time %>
+</p>
+
+
+<%= link_to 'Edit', edit_rail_route_path(@rail_route) %> |
+<%= link_to 'Listing rail routes', rail_routes_path %>

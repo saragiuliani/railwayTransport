@@ -1,0 +1,19 @@
+ </br>
+ <tr>
+	<th> <%= image_tag("locomotive.gif") %> </th>
+	<th> <font size="8" color="FireBrick"> RAILWAY TRANSPORT </font> </th> 
+</tr> 
+<br>
+<br>
+<tr>
+	<th> <font size="4" color="FireBrick"> Book now your trip! -> </font> </th>
+	<% if current_user %>
+		<th> <%= link_to 'New trip', new_booking_path %> </th>
+	<% else %>
+		<th> <%= link_to 'New trip', login_path %> </th>
+	<% end %>
+	<br>
+	<th> <font size="4" color="FireBrick"> Show rail routes! -> </font> </th>
+		<th> <%= link_to 'Click here', rail_routes_path %> </th>
+</tr>
+

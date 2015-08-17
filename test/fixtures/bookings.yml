@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  trip_departure: MyString
+  date: 2015-07-28 10:31:38
+  seats_class: 1
+  trip_destination: MyString
+
+two:
+  trip_departure: MyString
+  date: 2015-07-28 10:31:38
+  seats_class: 1
+  trip_destination: MyString

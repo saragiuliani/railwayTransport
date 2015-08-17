@@ -1,0 +1,37 @@
+<%= form_for(@rail_route) do |f| %>
+  <% if @rail_route.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@rail_route.errors.count, "error") %> prohibited this rail_route from being saved:</h2>
+
+      <ul>
+      <% @rail_route.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field" class="field" style="color:FireBrick">
+    <%= f.label :departure %><br />
+    <%= f.text_field :departure %>
+  </div>
+</br>
+  <div class="field" class="field" style="color:FireBrick">
+    <%= f.label :destination %><br />
+    <%= f.text_field :destination %>
+  </div>
+  </br>
+  <div class="field" class="field" style="color:FireBrick">
+    <%= f.label :d_time %><br />
+    <%= f.time_select :d_time %>
+  </div>
+  </br>
+  <div class="field" class="field" style="color:FireBrick">
+    <%= f.label :a_time %><br />
+    <%= f.time_select :a_time %>
+  </div>
+  </br>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

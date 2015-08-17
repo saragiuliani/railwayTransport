@@ -1,0 +1,37 @@
+</br>
+<font size="3"> <%= link_to "HOME", home_path %> </font>
+<!-- <p id="notice"><%= notice %></p> -->
+
+<p>
+  <b>User:</b>
+  <%= @booking.user_email %>
+</p>
+
+<p>
+  <b>Date:</b>
+  <%= @booking.date %>
+</p>
+
+<p>
+  <b>Departure:</b>
+  <%= @booking.trip_departure %>
+</p>
+
+<p>
+  <b>Destination:</b>
+  <%= @booking.trip_destination %>
+</p>
+
+<p>
+  <b>Seats class:</b>
+  <%= @booking.seats_class %>
+</p>
+
+<p>
+  <b>People:</b>
+  <%= @booking.n_people %>
+</p>
+
+
+<%= link_to 'Edit', edit_booking_path(@booking) %> |
+<%= link_to 'Go to booking list', bookings_path %>

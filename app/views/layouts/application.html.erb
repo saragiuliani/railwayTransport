@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<body style="background-color:AntiqueWhite"> 
+<center>
+
+<% flash.each do |key, value| %>
+	<div class="alert alert-<%= key %>"><%= value %></div>
+<% end %>
+
+<% if current_user %>
+	<% if current_user.is_admin? %>
+		Logged in as <%= current_user.email %> as ADMIN.
+	<% else %>
+		Logged in as <%= current_user.email %>.
+	<% end %>
+	<%= link_to "Log Out", logout_path %>
+<% else %>
+	<%= link_to "Sign Up", signup_path %> or
+	<%= link_to "Log In", login_path %> </br>
+	</br>
+	<%= link_to "HELP", help_path %> </br>
+	<%= link_to "ABOUT", about_path %> </br>
+<% end %>
+<%= yield %>
+
+</center>
+</body>
+
+</html>
