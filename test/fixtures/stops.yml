@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  city: MyString
+  a_time: 2015-08-18 14:47:12
+
+two:
+  city: MyString
+  a_time: 2015-08-18 14:47:12

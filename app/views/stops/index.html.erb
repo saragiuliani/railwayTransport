@@ -1,0 +1,28 @@
+<h1 style="color:FireBrick">Listing stops</h1>
+
+<table>
+  <tr>
+    <th style="color:FireBrick">| City |</th>
+    <th style="color:FireBrick">| Arrival time |</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @stops.each do |stop| %>
+  <tr>
+    <td><%= stop.city %></td>
+    <td><%= stop.a_time %></td>
+    <td><%= link_to 'Show', stop %></td>
+    <% if current_user.present? && current_user.is_admin %>
+      <td><%= link_to 'Edit', edit_stop_path(stop) %></td>
+      <td><%= link_to 'Destroy', stop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
+  </tr>
+<% end %>
+</table>
+
+<br />
+<% if current_user.present? && current_user.is_admin? %>
+  <%= link_to 'New Stop', new_stop_path %>
+<% end %>

@@ -1,4 +1,10 @@
 RailwayTransport::Application.routes.draw do
+  resources :trains
+
+
+  resources :stops
+
+
   resources :bookings
   resources :rail_routes
   resources :users

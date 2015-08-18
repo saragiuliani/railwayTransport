@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  serial_number: 1
+  model: MyString
+  firstclass_seats: 1
+  secondclass_seats: 1
+
+two:
+  serial_number: 1
+  model: MyString
+  firstclass_seats: 1
+  secondclass_seats: 1

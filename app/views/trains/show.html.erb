@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Serial number:</b>
+  <%= @train.serial_number %>
+</p>
+
+<p>
+  <b>Model:</b>
+  <%= @train.model %>
+</p>
+
+<p>
+  <b>Firstclass seats:</b>
+  <%= @train.firstclass_seats %>
+</p>
+
+<p>
+  <b>Secondclass seats:</b>
+  <%= @train.secondclass_seats %>
+</p>
+
+
+<%= link_to 'Edit', edit_train_path(@train) %> |
+<%= link_to 'Back', trains_path %>
