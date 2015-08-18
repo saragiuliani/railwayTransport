@@ -42,6 +42,7 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(params[:booking])
+    @booking.user_id = (2910 + (current_user.id.to_i*3070))
     @booking.user_email = current_user.email
 
     respond_to do |format|

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150817083119) do
+ActiveRecord::Schema.define(:version => 20150818091337) do
 
   create_table "bookings", :force => true do |t|
     t.string   "trip_departure"
@@ -22,9 +22,8 @@ ActiveRecord::Schema.define(:version => 20150817083119) do
     t.datetime "updated_at",       :null => false
     t.integer  "n_people"
     t.string   "user_email"
+    t.integer  "user_id"
   end
-
-  add_index "bookings", ["user_email", "date", "trip_departure"], :name => "bookings_user_email_date_trip_departure_key", :unique => true
 
   create_table "rail_routes", :force => true do |t|
     t.string   "departure"

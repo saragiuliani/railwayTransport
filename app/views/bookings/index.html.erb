@@ -8,7 +8,7 @@
 
 <table>
   <tr style="color:FireBrick">
-    <th>| Email |</th>
+    <th>| User - card |</th>
     <th>| Date |</th>
     <th>| Trip departure |</th>
     <th>| Trip destination |</th>
@@ -20,10 +20,10 @@
   </tr>
 
 <% @bookings.each do |booking| %>
-  <% if (current_user.email == booking.user_email) | (current_user.is_admin?) %>  <!-- IT DOESN'T WORK! -->
+  <% if ((2910 + (current_user.id.to_i*3070)) == booking.user_id) | (current_user.is_admin?) %> 
 
     <tr>
-      <td><center><%= booking.user_email %></center></td>
+      <td><center><%= booking.user_id %></center></td>
       <td><center><%= booking.date %></center></td>
       <td><center><%= booking.trip_departure %></center></td>
       <td><center><%= booking.trip_destination %></center></td>
