@@ -1,4 +1,4 @@
-<</br>
+</br>
 <br>
 <font size="3"> <%= link_to "HOME", home_path %> </font>
 <p>
@@ -21,6 +21,7 @@
   <%= @rail_route.a_time %>
 </p>
 
-
-<%= link_to 'Edit', edit_rail_route_path(@rail_route) %> |
+<% if current_user.present? && current_user.is_admin? %>
+	<%= link_to 'Edit', edit_rail_route_path(@rail_route) %>
+<% end %>
 <%= link_to 'Listing rail routes', rail_routes_path %>

@@ -24,6 +24,8 @@ ActiveRecord::Schema.define(:version => 20150817083119) do
     t.string   "user_email"
   end
 
+  add_index "bookings", ["user_email", "date", "trip_departure"], :name => "bookings_user_email_date_trip_departure_key", :unique => true
+
   create_table "rail_routes", :force => true do |t|
     t.string   "departure"
     t.string   "destination"
@@ -41,5 +43,7 @@ ActiveRecord::Schema.define(:version => 20150817083119) do
     t.string   "email"
     t.boolean  "is_admin"
   end
+
+  add_index "users", ["email"], :name => "users_email_key", :unique => true
 
 end

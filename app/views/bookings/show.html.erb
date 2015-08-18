@@ -32,6 +32,8 @@
   <%= @booking.n_people %>
 </p>
 
+<% if (@booking.date > (Time.now + 14400)) | (current_user.is_admin?) %>
+  <%= link_to 'Edit', edit_booking_path(@booking) %> |
+<% end %>
 
-<%= link_to 'Edit', edit_booking_path(@booking) %> |
 <%= link_to 'Go to booking list', bookings_path %>
