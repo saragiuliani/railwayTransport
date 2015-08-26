@@ -1,0 +1,21 @@
+<h1>Listing railroutes_stops</h1>
+
+<table>
+  <tr>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @railroutes_stops.each do |railroutes_stop| %>
+  <tr>
+    <td><%= link_to 'Show', railroutes_stop %></td>
+    <td><%= link_to 'Edit', edit_railroutes_stop_path(railroutes_stop) %></td>
+    <td><%= link_to 'Destroy', railroutes_stop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Railroutes stop', new_railroutes_stop_path %>

@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Rail Route - departure:</b>
+  <% @rail_route = RailRoute.find(@railroutes_stop.railroute_id) %>
+  <%= @rail_route.departure %>
+</p>
+
+<p>
+  <b>Rail Route - destination:</b>
+  <%= @rail_route.destination %>
+</p>
+
+<p>
+  <b>Stops:</b>
+  <br>
+  <% @stops = RailroutesStop.where("railroute_id = ?", @rail_route.id) %>
+  <% @stops.each do |s| %>
+  	<% @stop = Stop.find(s.stop_id) %>
+  	<%= @stop.city %> 
+  	<br>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_railroutes_stop_path(@railroutes_stop) %> |
+<%= link_to 'Back', railroutes_stops_path %>

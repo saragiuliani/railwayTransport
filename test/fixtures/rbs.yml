@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  railroute_departure: MyString
+  railroute_destination: MyString
+  railroute_dtime: 2015-08-18 15:58:47
+  trip_departure: MyString
+  booking_date: 2015-08-18 15:58:47
+  user_id: 1
+
+two:
+  railroute_departure: MyString
+  railroute_destination: MyString
+  railroute_dtime: 2015-08-18 15:58:47
+  trip_departure: MyString
+  booking_date: 2015-08-18 15:58:47
+  user_id: 1

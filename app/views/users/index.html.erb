@@ -1,39 +1,54 @@
-<% if current_user.is_admin? %>
-  <h1 style="color:FireBrick">Listing users</h1>
-<% else %>
-  <h1 style="color:FireBrick">Your info</h1>
-<% end %>
-<table>
-  <tr>
-    <th style="color:FireBrick">| User - card |</th>
-
-    <th style="color:FireBrick">| Email |</th>
-    
-    <th style="color:FireBrick">| Registration date |</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @users.each do |user| %>
-  <% if current_user.present? %>
-  <tr>
-
-    <% if (current_user.id == user.id) | current_user.is_admin? %>
-      <td><%= (2910 + (user.id.to_i*3071))  %></td>
-      <td><%= user.email %></td>
-      <td><%= user.registration_date %></td>
-      <td><%= link_to 'Show', user %></td>
-      <td><%= link_to 'Edit', edit_user_path(user) %></td>
-      <td><%= button_to "Delete", user, :method=>:delete, :class=>:destroy, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
-
-  </tr>
-  <% end %>
- <% end %> 
-</table>
-
-<br />
 <% if !(current_user.present?) %>
-  <%= link_to 'New User', new_user_path %>
+   <h1 style="color:FireBrick">You can not see these informations</h1>
+<% else %> 
+  <% if current_user.is_admin? %>
+    <h1 style="color:FireBrick">Listing users</h1>
+     <table>
+    <tr>
+      <th style="color:FireBrick">| User - card |</th>
+
+      <th style="color:FireBrick">| Email |</th>
+      
+      <th style="color:FireBrick">| Registration date |</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  <% else %>
+    <h1 style="color:FireBrick">Your info</h1>
+     <table>
+    <tr>
+      <th style="color:FireBrick">| User - card |</th>
+
+      <th style="color:FireBrick">| Email |</th>
+      
+      <th style="color:FireBrick">| Registration date |</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  <% end %>
 <% end %>
+
+  <% @users.each do |user| %>
+    <% if current_user.present? %>
+    <tr>
+
+      <% if (current_user.id == user.id) | current_user.is_admin? %>
+        <td><%= (2910 + (user.id.to_i*3071))  %></td>
+        <td><%= user.email %></td>
+        <td><%= user.registration_date %></td>
+        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= button_to "Delete", user, :method=>:delete, :class=>:destroy, data: { confirm: 'Are you sure?' } %></td>
+      <% end %>
+
+    </tr>
+    <% end %>
+   <% end %> 
+  </table>
+
+  <br />
+  <% if !(current_user.present?) %>
+    <%= link_to 'New User', new_user_path %>
+  <% end %>

@@ -14,7 +14,7 @@
     <td><%= stop.city %></td>
     <td><%= stop.a_time %></td>
     <td><%= link_to 'Show', stop %></td>
-    <% if current_user.present? && current_user.is_admin %>
+    <% if current_user.present? && current_user.is_admin? %>
       <td><%= link_to 'Edit', edit_stop_path(stop) %></td>
       <td><%= link_to 'Destroy', stop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>

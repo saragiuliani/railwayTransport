@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Railroute departure:</b>
+  <%= @rb.railroute_departure %>
+</p>
+
+<p>
+  <b>Railroute destination:</b>
+  <%= @rb.railroute_destination %>
+</p>
+
+<p>
+  <b>Railroute dtime:</b>
+  <%= @rb.railroute_dtime %>
+</p>
+
+<p>
+  <b>Trip departure:</b>
+  <%= @rb.trip_departure %>
+</p>
+
+<p>
+  <b>Booking date:</b>
+  <%= @rb.booking_date %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @rb.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_rb_path(@rb) %> |
+<%= link_to 'Back', rbs_path %>

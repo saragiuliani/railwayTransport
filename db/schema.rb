@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150818130512) do
+ActiveRecord::Schema.define(:version => 20150825124934) do
 
   create_table "bookings", :force => true do |t|
     t.string   "trip_departure"
@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(:version => 20150818130512) do
     t.integer  "n_people"
     t.string   "user_email"
     t.integer  "user_id"
+    t.string   "rr_departure"
+    t.string   "rr_destination"
+    t.time     "rr_dtime"
   end
 
   create_table "rail_routes", :force => true do |t|
@@ -32,6 +35,24 @@ ActiveRecord::Schema.define(:version => 20150818130512) do
     t.time     "a_time"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+  end
+
+  create_table "railroutes_stops", :force => true do |t|
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "railroute_id"
+    t.integer  "stop_id"
+  end
+
+  create_table "rbs", :force => true do |t|
+    t.string   "railroute_departure"
+    t.string   "railroute_destination"
+    t.time     "railroute_dtime"
+    t.string   "trip_departure"
+    t.datetime "booking_date"
+    t.integer  "user_id"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "stops", :force => true do |t|
@@ -48,6 +69,15 @@ ActiveRecord::Schema.define(:version => 20150818130512) do
     t.integer  "secondclass_seats"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+  end
+
+  create_table "trs", :force => true do |t|
+    t.string   "railroute_departure"
+    t.string   "railroute_destination"
+    t.time     "railroute_dtime"
+    t.integer  "train"
+    t.datetime "created_at",            :null => false
+    t.datetime "updated_at",            :null => false
   end
 
   create_table "users", :force => true do |t|

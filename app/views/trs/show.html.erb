@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Railroute departure:</b>
+  <%= @tr.railroute_departure %>
+</p>
+
+<p>
+  <b>Railroute destination:</b>
+  <%= @tr.railroute_destination %>
+</p>
+
+<p>
+  <b>Railroute dtime:</b>
+  <%= @tr.railroute_dtime %>
+</p>
+
+<p>
+  <b>Train:</b>
+  <%= @tr.train %>
+</p>
+
+
+<%= link_to 'Edit', edit_tr_path(@tr) %> |
+<%= link_to 'Back', trs_path %>

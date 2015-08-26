@@ -1,0 +1,33 @@
+<h1>Listing rbs</h1>
+
+<table>
+  <tr>
+    <th>Railroute departure</th>
+    <th>Railroute destination</th>
+    <th>Railroute dtime</th>
+    <th>Trip departure</th>
+    <th>Booking date</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @rbs.each do |rb| %>
+  <tr>
+    <td><%= rb.railroute_departure %></td>
+    <td><%= rb.railroute_destination %></td>
+    <td><%= rb.railroute_dtime %></td>
+    <td><%= rb.trip_departure %></td>
+    <td><%= rb.booking_date %></td>
+    <td><%= rb.user_id %></td>
+    <td><%= link_to 'Show', rb %></td>
+    <td><%= link_to 'Edit', edit_rb_path(rb) %></td>
+    <td><%= link_to 'Destroy', rb, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Rb', new_rb_path %>
