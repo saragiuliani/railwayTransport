@@ -41,8 +41,6 @@ class RailRoutesController < ApplicationController
   # POST /rail_routes.json
   def create
     @rail_route = RailRoute.new(params[:rail_route])
-    #@stops = Stop.where(:id => params[:stopping_set])
-    #@rail_route.stops << @stops
 
     respond_to do |format|
       if @rail_route.save

@@ -1,6 +1,12 @@
-<h1>Editing stop</h1>
+</br>
+<font size="3"> <%= link_to "HOME", home_path %> </font>
+<h1  style="color:FireBrick">Editing Stop</h1>
+<% if current_user.present? && current_user.is_admin? %>
 
-<%= render 'form' %>
+	<%= render 'form' %>
 
-<%= link_to 'Show', @stop %> |
-<%= link_to 'Back', stops_path %>
+	<%= link_to 'Show', @stop %> |
+	<%= link_to 'Back', stops_path %>
+<% else %>
+	<h1 style="color:FireBrick">denied access</h1>
+<% end %>

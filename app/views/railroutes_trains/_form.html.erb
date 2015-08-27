@@ -1,0 +1,25 @@
+<%= form_for(@railroutes_train) do |f| %>
+  <% if @railroutes_train.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@railroutes_train.errors.count, "error") %> prohibited this railroutes_train from being saved:</h2>
+
+      <ul>
+      <% @railroutes_train.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :railroute_id %><br />
+    <%= f.number_field :railroute_id %>
+  </div>
+  <div class="field">
+    <%= f.label :train_id %><br />
+    <%= f.number_field :train_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

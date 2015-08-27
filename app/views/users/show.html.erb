@@ -1,20 +1,22 @@
-<p id="notice"><%= notice %></p>
+<% if current_user.present? && (current_user.is_admin? | current_user.id == @user.id) %>
+	<p>
+	  <b>User - card:</b>
+	  <%= (2910 + (@user.id.to_i*3071)) %>
+	</p>
 
-<p>
-  <b>User - card:</b>
-  <%= (2910 + (@user.id.to_i*3071)) %>
-</p>
+	<p>
+	  <b>Email:</b>
+	  <%= @user.email %>
+	</p>
 
-<p>
-  <b>Email:</b>
-  <%= @user.email %>
-</p>
-
-<p>
-  <b>Registration date:</b>
-  <%= @user.registration_date %>
-</p>
+	<p>
+	  <b>Registration date:</b>
+	  <%= @user.registration_date %>
+	</p>
 
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
+	<%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+<% else %>
+	<h1 style="color:FireBrick">denied access</h1>
+<% end %>

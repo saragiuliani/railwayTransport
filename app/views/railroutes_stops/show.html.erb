@@ -1,26 +1,31 @@
-<p id="notice"><%= notice %></p>
+<br>
+<%= link_to "HOME", home_path %>
+<% if current_user.present? && current_user.is_admin? %>    
+    <p>
+      <b>Rail Route - departure:</b>
+      <% @rail_route = RailRoute.find(@railroutes_stop.railroute_id) %>
+      <%= @rail_route.departure %>
+    </p>
 
-<p>
-  <b>Rail Route - departure:</b>
-  <% @rail_route = RailRoute.find(@railroutes_stop.railroute_id) %>
-  <%= @rail_route.departure %>
-</p>
+    <p>
+      <b>Rail Route - destination:</b>
+      <%= @rail_route.destination %>
+    </p>
 
-<p>
-  <b>Rail Route - destination:</b>
-  <%= @rail_route.destination %>
-</p>
+    <p>
+      <b>Stops:</b>
+      <br>
+      <% @stops = RailroutesStop.where("railroute_id = ?", @rail_route.id) %>
+      <% @stops.each do |s| %>
+      	<% @stop = Stop.find(s.stop_id) %>
+      	<%= @stop.city %> AT
+        <%= @stop.a_time.strftime("%H:%M") %> 
+      	<br>
+      <% end %>
+    </p>
 
-<p>
-  <b>Stops:</b>
-  <br>
-  <% @stops = RailroutesStop.where("railroute_id = ?", @rail_route.id) %>
-  <% @stops.each do |s| %>
-  	<% @stop = Stop.find(s.stop_id) %>
-  	<%= @stop.city %> 
-  	<br>
-  <% end %>
-</p>
-
-<%= link_to 'Edit', edit_railroutes_stop_path(@railroutes_stop) %> |
-<%= link_to 'Back', railroutes_stops_path %>
+    <%= link_to 'Edit', edit_railroutes_stop_path(@railroutes_stop) %> |
+    <%= link_to 'Back', railroutes_stops_path %>
+<% else %>
+  <h1 style="color:FireBrick">denied access</h1>
+<% end %>

@@ -1,0 +1,31 @@
+<br>
+<%= link_to "HOME", home_path %>
+
+<h1 style="color:FireBrick">Listing RS</h1>
+  <% if current_user.present? && current_user.is_admin? %>
+  <table>
+    <tr>
+      <th>Railroute</th>
+      <th>Train</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+
+  <% @railroutes_trains.each do |railroutes_train| %>
+    <tr>
+      <td><%= railroutes_train.railroute_id %></td>
+      <td><%= railroutes_train.train_id %></td>
+      <td><%= link_to 'Show', railroutes_train %></td>
+      <td><%= link_to 'Edit', edit_railroutes_train_path(railroutes_train) %></td>
+      <td><%= link_to 'Destroy', railroutes_train, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+  </table>
+
+  <br />
+
+  <%= link_to 'New Railroutes train', new_railroutes_train_path %>
+<% else %>
+  <h1 style="color:FireBrick">denied access</h1>
+<% end %>

@@ -1,6 +1,9 @@
 <h1 style="color:FireBrick">Editing user</h1>
+<% if current_user.present? && (current_user.is_admin? | current_user.id == @user.id) %>
+	<%= render 'form' %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+	<%= link_to 'Show', @user %> |
+	<%= link_to 'Back', users_path %>
+<% else %>
+	<h1 style="color:FireBrick">denied access</h1>
+<% end %>

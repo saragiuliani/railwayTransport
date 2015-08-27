@@ -18,8 +18,10 @@
     <td><%= train.firstclass_seats %></td>
     <td><%= train.secondclass_seats %></td>
     <td><%= link_to 'Show', train %></td>
-    <td><%= link_to 'Edit', edit_train_path(train) %></td>
-    <td><%= link_to 'Destroy', train, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if current_user.present? && current_user.is_admin? %>
+      <td><%= link_to 'Edit', edit_train_path(train) %></td>
+      <td><%= link_to 'Destroy', train, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>

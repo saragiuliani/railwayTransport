@@ -1,45 +1,45 @@
 </br>
 </br>
-<%= link_to "HELP", help_path %> </br>
-<%= link_to "ABOUT", about_path %> </br>
-</br>
 <%= link_to "HOME", home_path %>
 <h1 style="color:FireBrick">Listing bookings</h1>
+<% if current_user.present? %>
 
-<table>
-  <tr style="color:FireBrick">
-    <th>| User - card |</th>
-    <th>| Date |</th>
-    <th>| Trip departure |</th>
-    <th>| Trip destination |</th>
-    <th>| Seats class |</th>
-    <th>| People |</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @bookings.each do |booking| %>
-  <% if ((2910 + (current_user.id.to_i*3071)) == booking.user_id) | (current_user.is_admin?) %> 
-
-    <tr>
-      <td><center><%= booking.user_id %></center></td>
-      <td><center><%= booking.date %></center></td>
-      <td><center><%= booking.trip_departure %></center></td>
-      <td><center><%= booking.trip_destination %></center></td>
-      <td><center><%= booking.seats_class %></center></td>
-      <td><center><%= booking.n_people %></center></td>
-      <td><%= link_to 'Show', booking %></td>
-      <% if (booking.date > (Time.now + 14400)) | current_user.is_admin? %>
-      <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-   <!--  <td><%= link_to 'Delete', booking,:method=>:delete, :class=>:destroy, data: { confirm: 'Are you sure?' } %> </td> -->
-      <td><%= button_to "Delete", booking, :method=>:delete, :class=>:destroy, data: { confirm: 'Are you sure?' }  %></td>
-      <% end %>
+  <table>
+    <tr style="color:FireBrick">
+      <th>| User - card |</th>
+      <th>| Date |</th>
+      <th>| Trip departure |</th>
+      <th>| Trip destination |</th>
+      <th>| Seats class |</th>
+      <th>| People |</th>
+      <th></th>
+      <th></th>
+      <th></th>
     </tr>
+
+  <% @bookings.each do |booking| %>
+    <% if ((2910 + (current_user.id.to_i*3071)) == booking.user_id) | (current_user.is_admin?) %> 
+
+      <tr>
+        <td><center><%= booking.user_id %></center></td>
+        <td><center><%= booking.date %></center></td>
+        <td><center><%= booking.trip_departure %></center></td>
+        <td><center><%= booking.trip_destination %></center></td>
+        <td><center><%= booking.seats_class %></center></td>
+        <td><center><%= booking.n_people %></center></td>
+        <td><%= link_to 'Show', booking %></td>
+        <% if (booking.date > (Time.now + 14400)) | current_user.is_admin? %>
+        <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
+        <td><%= button_to "Delete", booking, :method=>:delete, :class=>:destroy, data: { confirm: 'Are you sure?' }  %></td>
+        <% end %>
+      </tr>
+    <% end %>
   <% end %>
+  </table>
+
+  <br />
+
+  <%= link_to 'New Booking', new_booking_path %>
+<% else %>
+  <h1 style="color:FireBrick">denied access</h1>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Booking', new_booking_path %>

@@ -1,39 +1,40 @@
-</br>
 <font size="3"> <%= link_to "HOME", home_path %> </font>
-<!-- <p id="notice"><%= notice %></p> -->
+<% if current_user.present? && (current_user.is_admin? | ((2910 + (current_user.id.to_i*3071)) == @booking.user_id) ) %></br></br>
+  <p>
+    <b>User:</b>
+    <%= @booking.user_id %>
+  </p>
 
-<p>
-  <b>User:</b>
-  <%= @booking.user_id %>
-</p>
+  <p>
+    <b>Date:</b>
+    <%= @booking.date %>
+  </p>
 
-<p>
-  <b>Date:</b>
-  <%= @booking.date %>
-</p>
+  <p>
+    <b>Departure:</b>
+    <%= @booking.trip_departure %>
+  </p>
 
-<p>
-  <b>Departure:</b>
-  <%= @booking.trip_departure %>
-</p>
+  <p>
+    <b>Destination:</b>
+    <%= @booking.trip_destination %>
+  </p>
 
-<p>
-  <b>Destination:</b>
-  <%= @booking.trip_destination %>
-</p>
+  <p>
+    <b>Seats class:</b>
+    <%= @booking.seats_class %>
+  </p>
 
-<p>
-  <b>Seats class:</b>
-  <%= @booking.seats_class %>
-</p>
+  <p>
+    <b>People:</b>
+    <%= @booking.n_people %>
+  </p>
 
-<p>
-  <b>People:</b>
-  <%= @booking.n_people %>
-</p>
+  <% if (@booking.date > (Time.now + 14400)) | (current_user.is_admin?) %>
+    <%= link_to 'Edit', edit_booking_path(@booking) %> |
+  <% end %>
 
-<% if (@booking.date > (Time.now + 14400)) | (current_user.is_admin?) %>
-  <%= link_to 'Edit', edit_booking_path(@booking) %> |
+  <%= link_to 'Go to booking list', bookings_path %>
+<% else %>
+  <h1 style="color:FireBrick">denied access</h1>
 <% end %>
-
-<%= link_to 'Go to booking list', bookings_path %>

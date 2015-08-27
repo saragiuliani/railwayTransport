@@ -1,5 +1,10 @@
-<h1>New stop</h1>
-
+</br>
+<font size="3"> <%= link_to "HOME", home_path %> </font>
+<h1  style="color:FireBrick">New Stop</h1>
+<% if current_user.present? && current_user.is_admin? %>
 <%= render 'form' %>
 
 <%= link_to 'Back', stops_path %>
+<% else %>
+	<h1 style="color:FireBrick">denied access</h1>
+<% end %>

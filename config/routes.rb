@@ -1,5 +1,8 @@
 RailwayTransport::Application.routes.draw do
 
+  resources :railroutes_trains
+
+
   resources :railroutes_stops
 
 

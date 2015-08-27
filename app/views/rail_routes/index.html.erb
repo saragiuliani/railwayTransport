@@ -1,18 +1,14 @@
 </br>
-</br>
-<%= link_to "HELP", help_path %> </br>
-<%= link_to "ABOUT", about_path %> </br>
-</br>
 <%= link_to "HOME", home_path %>
 <h1 class="field" style="color:FireBrick">Listing rail routes</h1>
 
 <table>
   <tr style="color:FireBrick">
-    <th>Departure</th>
-    <th>Destination</th>
-    <th>Departure time</th>
-    <th>Arrival time</th>
-    <th></th>
+    <th>| Departure |</th>
+    <th>| Destination |</th>
+    <th>| Departure time |</th>
+    <th>| Arrival time |</th>
+    <th>| Train - number |</th>
     <th></th>
     <th></th>
   </tr>
@@ -22,8 +18,13 @@
     
     <td><center><%= rail_route.departure %></center></td>
     <td><center><%= rail_route.destination %></center></td>
-    <td><center><%= rail_route.d_time %></center></td>
-    <td><center><%= rail_route.a_time %></center></td>
+    <td><center><%= rail_route.d_time.strftime("%H:%M") %></center></td>
+    <td><center><%= rail_route.a_time.strftime("%H:%M") %></center></td>
+    <% @rrt = RailroutesTrain.where("railroute_id = ?", rail_route.id) %>
+    <% @rrt.each do |r| 
+      @train = Train.find(r.train_id)%>
+    <td><center><%= @train.serial_number %></center></td>
+    <% end %>
     <td><%= link_to 'Show', rail_route %></center></td>
     <% if current_user.present? && current_user.is_admin? %>
       <td><%= link_to 'Edit', edit_rail_route_path(rail_route) %></td>

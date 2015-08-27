@@ -1,0 +1,33 @@
+<br>
+<%= link_to "HOME", home_path %>
+<% if current_user.present? && current_user.is_admin? %>    
+
+	<% @railroute = RailRoute.find(@railroutes_train.railroute_id) %>
+	<% @train = Train.find(@railroutes_train.train_id) %>
+
+	<p>
+	  <b>Railroute - Departure:</b>
+	  <%= @railroute.departure %>
+	</p>
+
+	<p>
+	  <b>Railroute - Destination:</b>
+	  <%= @railroute.destination %>
+	</p>
+
+	<p>
+	  <b>Railroute - Time:</b>
+	  <%= @railroute.d_time %>
+	</p>
+
+	<p>
+	  <b>Train:</b>
+	  <%= @train.serial_number %>
+	</p>
+
+
+	<%= link_to 'Edit', edit_railroutes_train_path(@railroutes_train) %> |
+	<%= link_to 'Back', railroutes_trains_path %>
+<% else %>
+  <h1 style="color:FireBrick">denied access</h1>
+<% end %>
