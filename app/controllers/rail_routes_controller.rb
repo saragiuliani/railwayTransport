@@ -60,6 +60,9 @@ class RailRoutesController < ApplicationController
     @stops = Stop.where(:id => params[:stopping_set])
     @rail_route.stops.destroy_all
     @rail_route.stops << @stops
+    @train = Train.where(:id => params[:training_set])
+    @rail_route.trains.destroy_all
+    @rail_route.trains << @trains
 
     respond_to do |format|
       if @rail_route.update_attributes(params[:rail_route])

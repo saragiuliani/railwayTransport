@@ -40,9 +40,10 @@ class RailroutesTrainsController < ApplicationController
   # POST /railroutes_trains
   # POST /railroutes_trains.json
   def create
+    #@rail_route = RailRoute.find()
     @railroutes_train = RailroutesTrain.new(params[:railroutes_train])
-    @railroutes_train.railroute_id = @rail_route.id
-    @railroutes_train.train_id = @train.id
+    #@railroutes_train.railroute_id = @rail_route.id
+    #@railroutes_train.train_id = @train.id
 
     respond_to do |format|
       if @railroutes_train.save

@@ -1,8 +1,8 @@
 </br>
 </br>
 <%= link_to "HOME", home_path %>
-<h1 style="color:FireBrick">New railroute_stop</h1>
-
+<h1 style="color:FireBrick">New railroute_train</h1>
+<% if current_user.present? && current_user.is_admin? %>
 	<%= render 'form' %>
 
 	<%= link_to 'Back', railroutes_trains_path %>

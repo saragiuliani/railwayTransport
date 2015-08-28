@@ -12,27 +12,31 @@
     <th></th>
     <th></th>
   </tr>
-
 <% @rail_routes.each do |rail_route| %>
-  <tr>
-    
-    <td><center><%= rail_route.departure %></center></td>
-    <td><center><%= rail_route.destination %></center></td>
-    <td><center><%= rail_route.d_time.strftime("%H:%M") %></center></td>
-    <td><center><%= rail_route.a_time.strftime("%H:%M") %></center></td>
-    <% @rrt = RailroutesTrain.where("railroute_id = ?", rail_route.id) %>
-    <% @rrt.each do |r| 
-      @train = Train.find(r.train_id)%>
-    <td><center><%= @train.serial_number %></center></td>
-    <% end %>
-    <td><%= link_to 'Show', rail_route %></center></td>
-    <% if current_user.present? && current_user.is_admin? %>
-      <td><%= link_to 'Edit', edit_rail_route_path(rail_route) %></td>
-      <td><%= link_to 'Destroy', rail_route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    <% end %>
+  <% @rrt = RailroutesTrain.where("railroute_id = ?", rail_route.id) %>
+  <% @rrt.each do |railroute_train| %>
+    <tr>
+      
+      <td><center><%= rail_route.departure %></center></td>
+      <td><center><%= rail_route.destination %></center></td>
+      <td><center><%= rail_route.d_time.strftime("%H:%M") %></center></td>
+      <td><center><%= rail_route.a_time.strftime("%H:%M") %></center></td>
+      
+      <% @rrt.each do |r| 
+        @train = Train.find(r.train_id)%>
+        <td><center><%= @train.serial_number %></center><br></td>
+      <% end %>
+        <td><%= link_to 'Show', rail_route %></center></td>
+        <% if current_user.present? && current_user.is_admin? %>
+          <td><%= link_to 'Edit', edit_rail_route_path(rail_route) %></td>
+          <td><%= link_to 'Destroy', rail_route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+    </tr>
   <% end %>
-  </tr>
+    
+<% end %>
 </table>
+
 
 <br />
 <% if current_user.present? && current_user.is_admin? %>

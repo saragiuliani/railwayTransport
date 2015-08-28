@@ -41,8 +41,8 @@ class RailroutesStopsController < ApplicationController
   # POST /railroutes_stops.json
   def create
     @railroutes_stop = RailroutesStop.new(params[:railroutes_stop])
-    @railroutes_stop.railroute_id = @railroute.id
-    @railroutes_stop.stop_id = @stop.id
+    #@railroutes_stop.railroute_id = @rail_route.id
+    #@railroutes_stop.stop_id = @stop.id
 
 
     respond_to do |format|
