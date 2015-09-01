@@ -42,7 +42,9 @@ class RailroutesStopsController < ApplicationController
   def create
     @railroutes_stop = RailroutesStop.new(params[:railroutes_stop])
     @rail_route = RailRoute.find(@railroutes_stop.railroute_id)
-  
+    @stop = Stop.find(@railroutes_stop.stop_id)
+    if (stop.time < rail_route.d_time) | (stop.time > rail_route.a_time)
+      @railroutes_stop = RailroutesStop.new(params[:railroutes_stop])
 
 
     respond_to do |format|

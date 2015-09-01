@@ -74,6 +74,11 @@ class TrainsController < ApplicationController
   # DELETE /trains/1.json
   def destroy
     @train = Train.find(params[:id])
+    @railroutes = RailRoute.where("train_number = ?", (2910 + (@train.id.to_i*3071)))
+    @railroutes.each do |rr|
+      @rail = RailRoute.find(rr.id)
+      @rail.destroy
+    end
     @train.destroy
 
     respond_to do |format|

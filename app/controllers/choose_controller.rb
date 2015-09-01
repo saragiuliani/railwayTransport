@@ -1,0 +1,3 @@
+class RailroutesStopsController < ApplicationController
+
+end

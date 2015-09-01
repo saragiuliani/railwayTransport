@@ -2,6 +2,14 @@ class BookingsController < ApplicationController
   # GET /bookings
   # GET /bookings.json
   # befor_action :set_booking, only: [:show, :edit, :update, :destroy]
+
+  def choose 
+    @train = Train.find(params[:train_id])
+    @rail_route = RailRoute.find(params[:railroute_id])
+    
+  end
+
+
   def index
     @bookings = Booking.all
 

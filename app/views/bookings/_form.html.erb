@@ -17,101 +17,37 @@
     <%= f.datetime_select :date %>
   </div>
   <br>
+
   <div class="field" style="color:FireBrick">
-    <!--<%= f.label :trip_departure %><br />
-    <%= f.text_field :trip_departure %>-->
     <label for="trip_departure">Departure</label><br />
     <select name="booking[trip_departure]">
-      <option value="Ancona">Ancona</option>
-      <option value="Bari C.le">Bari C.le</option>
-      <option value="Bologna C.le">Bologna C.le</option>
-      <option value="Brindisi">Brindisi</option>
-      <option value="Firenze(Santa Maria Novella)">Firenze Santa Maria Novella</option>
-      <option value="Foggia">Foggia</option>
-      <option>Mantova</option>
-      <option>Milano C.le</option>
-      <option>Modena</option>
-      <option>Piacenza</option>
-      <option>Reggio Calbria</option>
-      <option>Reggio Emilia</option>
-      <option>San Benedetto Del Tronto</option>
-      <option>Venezia S.Lucia</option>
-      <option>Verona Porta Nuova</option>
-      <option>San Benedetto Del Tronto</option>
-      
+    <% @stops = Stop.find_each do |dep| %>
+      <option><%= dep.city %></option>
+    <% end %>
     </select>
-    <!--<select name="trip_departure[booking_id]">
-      <option>Select</option>
-      <option>Ancona</option>
-      <option>Bari C.le</option>
-      <option>Bologna C.le</option>
-      <option>Brindisi</option>
-      <option>Firenze Santa Maria Novella</option>
-      <option>Foggia</option>
-      <option>Mantova</option>
-      <option>Milano C.le</option>
-      <option>Modena</option>
-      <option>Piacenza</option>
-      <option>Reggio Calbria</option>
-      <option>Reggio Emilia</option>
-      <option>Venezia S.Lucia</option>
-      <option>Verona Porta Nuova</option>
-      <option>San Benedetto Del Tronto</option>
-    </select>-->
-  </div>
-</br>
-  <div class="field" style="color:FireBrick">
-    <label for="trip_destination">Destination</label><br />
-    <select name="booking[trip_destination]">
-      <option value="Ancona">Ancona</option>
-      <option value="Bari C.le">Bari C.le</option>
-      <option value="Bologna C.le">Bologna C.le</option>
-      <option value="Brindisi">Brindisi</option>
-      <option value="Firenze(Santa Maria Novella)">Firenze Santa Maria Novella</option>
-      <option value="Foggia">Foggia</option>
-      <option>Mantova</option>
-      <option>Milano C.le</option>
-      <option>Modena</option>
-      <option>Piacenza</option>
-      <option>Reggio Calbria</option>
-      <option>Reggio Emilia</option>
-      <option>San Benedetto Del Tronto</option>
-      <option>Venezia S.Lucia</option>
-      <option>Verona Porta Nuova</option>
-      <option>San Benedetto Del Tronto</option>
-    </select>
-    <!--<%= f.label :trip_destination %><br />
-    <%= f.text_field :trip_destination %>
-    <select name="trip_destination">
-      <option>Select</option>
-      <option>Ancona</option>
-      <option>Bari C.le</option>
-      <option>Bologna C.le</option>
-      <option>Brindisi</option>
-      <option>Firenze Santa Maria Novella</option>
-      <option>Foggia</option>
-      <option>Mantova</option>
-      <option>Milano C.le</option>
-      <option>Modena</option>
-      <option>Piacenza</option>
-      <option>Reggio Calbria</option>
-      <option>Reggio Emilia</option>
-      <option>Venezia S.Lucia</option>
-      <option>Verona Porta Nuova</option>
-      <option>San Benedetto Del Tronto</option>
-    </select>  -->  
-  </div>
   </div>
 </br>
 
   <div class="field" style="color:FireBrick">
-    <label for="seats_class">Seats Class</label><br />
-    <select name="booking[seats_class]">
-      <option selected="selected" value="Select">Select</option>
-      <option value="1">1</option>
-      <option value="2">2</option>
-    </select> 
+    <label for="trip_destination">Destination</label><br />
+    <select name="booking[trip_destination]">
+    <% Stop.find_each do |dest| %>
+      <option><%= dest.city %></option>
+    <% end %>
+    </select>
+  
   </div>
+  </div>
+</br>
+
+  <div class="field" >
+    <label style="color:FireBrick" for="seats_class">Seats Class</label><br />
+     <input type="radio" name="Seats_class" value="1" checked>First
+    <br>
+    <input type="radio" name="Seats_class" value="2">Second
+  </div>
+
+
 </br>
   <div class="field" style="color:FireBrick">
     <label for="n_peole">People</label> <br />
@@ -130,7 +66,7 @@
   
     </br>
       <div class="actions">
-        <%= link_to 'Choose your train', choose_path %>
-        <%= f.submit %>
+        <%= link_to 'Choose your train', choose_path(:stop_id => "TRENOPROVA", :railroute_id => "RRPROVA") %>
+       <!-- <%= f.submit %> -->
       </div>
 <% end %>

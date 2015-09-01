@@ -1,0 +1,25 @@
+<table>
+    <tr style="color:FireBrick">
+    <th></th>
+      <th>| Train |</th>
+      <th>| Rail route - Dep |</th>
+      <th>| Rail route - Dest |</th>
+      <th>| Time |</th>
+      <th>| Train model |</th>
+    </tr>
+ 
+ 	
+	<% @railroute = RailRoute.find_each do |rr| %>
+	<tr>
+		<% @train = Train.find( ((rr.train_number - 2910)/3071) ) %>
+		<td><input type="radio"></td>
+	    <td><center><%= (2910 + (@train.id.to_i*3071)) %></center></td>
+	    <td><center><%= rr.departure %></center></td>
+	    <td><center><%= rr.destination %></center></td>
+	    <td><center><%= rr.d_time %></center></td>
+	    <td><center><%= @train.model %></center></td>
+
+	 </tr>   	
+<% end %>
+
+</table>
