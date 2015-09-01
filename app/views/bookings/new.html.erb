@@ -8,5 +8,5 @@
 	<%= link_to 'Go to booking list', bookings_path %> |
 	<%= link_to 'Cancel', new_booking_path %>
 <% else %>
-	<h1 style="color:FireBrick">denied access</h1>
+	<%= link_to 'Login', login_path %>
 <% end %>

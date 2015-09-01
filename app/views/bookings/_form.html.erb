@@ -128,10 +128,9 @@
     </select>
   </div>
   
-  <% if current_user.present? %>
     </br>
       <div class="actions">
+        <%= link_to 'Choose your train', choose_path %>
         <%= f.submit %>
       </div>
-  <% end %>
 <% end %>

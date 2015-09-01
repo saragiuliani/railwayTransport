@@ -22,6 +22,7 @@ RailwayTransport::Application.routes.draw do
   get 'home' => 'static_pages#home'
   get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
+  get 'choose' => 'bookings#choose'
   #get 'booking' => 'bookings#new'
   #get 'rail_route' => 'rail_routes#new'
 

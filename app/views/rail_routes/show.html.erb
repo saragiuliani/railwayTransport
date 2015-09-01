@@ -21,27 +21,19 @@
   	@stop = Stop.find(r.stop_id)%>
   	<%= @stop.city %> <font size="3" style="color:FireBrick"> AT </font>
   	<%= @stop.a_time.strftime("%H:%M") %> 
-  <br>
   <% end %>
 </p>
 
 <p>
   <b><font size="4" style="color:FireBrick">Train - number:</font></b>
   <br>
-  <% @rrt = RailroutesTrain.where("railroute_id = ?", @rail_route.id) %>
-  <% @rrt.each do |r| 
-    @train = Train.find(r.train_id)%>
-    <%= @train.serial_number %>
+  <%= @rail_route.train_number %>
   <br>
-  <% end %>
 </p>
 
-<% if current_user.present? && current_user.is_admin? %>
-	<%= link_to 'Select train', new_railroutes_train_path %>
-<% end %>
 <br>
 <br>
 <% if current_user.present? && current_user.is_admin? %>
-	<%= link_to 'Edit', edit_rail_route_path(@rail_route) %>
+	<%= link_to 'Edit', edit_rail_route_path(@rail_route) %> |
 <% end %>
 <%= link_to 'Listing rail routes', rail_routes_path %>

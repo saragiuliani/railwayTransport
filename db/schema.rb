@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150827123313) do
+ActiveRecord::Schema.define(:version => 20150828134225) do
 
   create_table "bookings", :force => true do |t|
     t.string   "trip_departure"
@@ -33,8 +33,9 @@ ActiveRecord::Schema.define(:version => 20150827123313) do
     t.string   "destination"
     t.time     "d_time"
     t.time     "a_time"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+    t.integer  "train_number"
   end
 
   create_table "railroutes_stops", :force => true do |t|

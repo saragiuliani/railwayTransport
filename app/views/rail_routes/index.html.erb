@@ -1,7 +1,7 @@
 </br>
+<br>
 <%= link_to "HOME", home_path %>
 <h1 class="field" style="color:FireBrick">Listing rail routes</h1>
-
 <table>
   <tr style="color:FireBrick">
     <th>| Departure |</th>
@@ -9,36 +9,28 @@
     <th>| Departure time |</th>
     <th>| Arrival time |</th>
     <th>| Train - number |</th>
-    <th></th>
-    <th></th>
+
   </tr>
-<% @rail_routes.each do |rail_route| %>
-  <% @rrt = RailroutesTrain.where("railroute_id = ?", rail_route.id) %>
-  <% @rrt.each do |railroute_train| %>
-    <tr>
+  <% @rail_routes.each do |rail_route| %>
+  <tr>
+    
       
       <td><center><%= rail_route.departure %></center></td>
       <td><center><%= rail_route.destination %></center></td>
       <td><center><%= rail_route.d_time.strftime("%H:%M") %></center></td>
       <td><center><%= rail_route.a_time.strftime("%H:%M") %></center></td>
-      
-      <% @rrt.each do |r| 
-        @train = Train.find(r.train_id)%>
-        <td><center><%= @train.serial_number %></center><br></td>
+      <td><center><%= rail_route.train_number %></center></td>
+      <td><%= link_to 'Show', rail_route %></center></td>
+      <% if current_user.present? && current_user.is_admin? %>
+        <td><%= link_to 'Edit', edit_rail_route_path(rail_route) %></td>
+        <td><%= button_to 'Destroy', rail_route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
-        <td><%= link_to 'Show', rail_route %></center></td>
-        <% if current_user.present? && current_user.is_admin? %>
-          <td><%= link_to 'Edit', edit_rail_route_path(rail_route) %></td>
-          <td><%= link_to 'Destroy', rail_route, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <% end %>
-    </tr>
-  <% end %>
     
-<% end %>
+  </tr>
+  <% end %>
 </table>
 
-
-<br />
+<br/>
 <% if current_user.present? && current_user.is_admin? %>
   <%= link_to 'New Rail route', new_rail_route_path %>
 <% end %>

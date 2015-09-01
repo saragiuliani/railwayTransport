@@ -1,3 +1,6 @@
+<br>
+</br>
+<font size="3"> <%= link_to "HOME", home_path %> </font>
 <% if !(current_user.present?) %>
    <h1 style="color:FireBrick">You can not see these informations</h1>
 <% else %> 
@@ -35,12 +38,12 @@
     <tr>
 
       <% if (current_user.id == user.id) | current_user.is_admin? %>
-        <td><%= (2910 + (user.id.to_i*3071))  %></td>
+        <td><%= (23910 + (user.id.to_i*30471))  %></td>
         <td><%= user.email %></td>
         <td><%= user.registration_date %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= button_to "Delete", user, :method=>:delete, :class=>:destroy, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Delete", user, :method=>:delete, :class=>:destroy, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
 
     </tr>

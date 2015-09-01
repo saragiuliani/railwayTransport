@@ -41,6 +41,7 @@ class TrainsController < ApplicationController
   # POST /trains.json
   def create
     @train = Train.new(params[:train])
+    
 
     respond_to do |format|
       if @train.save

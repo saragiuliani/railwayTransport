@@ -5,10 +5,10 @@
 
 <table>
   <tr>
-    <th style="color:FireBrick">Serial number</th>
-    <th style="color:FireBrick">Model</th>
-    <th style="color:FireBrick">Firstclass seats</th>
-    <th style="color:FireBrick">Secondclass seats</th>
+    <th style="color:FireBrick">| Serial number |</th>
+    <th style="color:FireBrick">| Model |</th>
+    <th style="color:FireBrick">| Firstclass seats |</th>
+    <th style="color:FireBrick">| Secondclass seats |</th>
     <th></th>
     <th></th>
     <th></th>
@@ -16,14 +16,14 @@
 
 <% @trains.each do |train| %>
   <tr>
-    <td><%= train.serial_number %></td>
+    <td><%= (2910 + (train.id.to_i*3071)) %></td>
     <td><%= train.model %></td>
     <td><%= train.firstclass_seats %></td>
     <td><%= train.secondclass_seats %></td>
     <td><%= link_to 'Show', train %></td>
     <% if current_user.present? && current_user.is_admin? %>
       <td><%= link_to 'Edit', edit_train_path(train) %></td>
-      <td><%= link_to 'Destroy', train, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= button_to 'Destroy', train, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
   </tr>
 <% end %>
