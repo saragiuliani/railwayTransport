@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150828134225) do
+ActiveRecord::Schema.define(:version => 20150901145758) do
 
   create_table "bookings", :force => true do |t|
     t.string   "trip_departure"

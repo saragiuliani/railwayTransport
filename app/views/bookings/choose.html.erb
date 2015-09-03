@@ -3,4 +3,53 @@
 <%= link_to "HOME", home_path %>
 <h1 style="color:FireBrick">Choose your train</h1>
 
-<%= @train.id %>
+</table>
+
+  <div class="field" >
+    <label style="color:FireBrick" for="seats_class">Seats Class</label><br />
+     <input type="radio" name="Seats_class" value="1" checked>First
+    <br>
+    <input type="radio" name="Seats_class" value="2">Second
+  </div>
+
+
+</br>
+  <div class="field" style="color:FireBrick">
+    <label for="n_peole">People</label> <br />
+    <select name="booking[n_people]">
+      <option selected>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+    </select>
+  </div>
+
+
+  <table>
+    <tr style="color:FireBrick">
+    <th></th>
+      <th>| Train |</th>
+      <th>| Rail route - Dep |</th>
+      <th>| Rail route - Dest |</th>
+      <th>| Time |</th>
+      <th>| Train model |</th>
+    </tr>
+ 
+ 	
+	<% @railroute = RailRoute.find_each do |rr| %>
+	<tr>
+		<% @train = Train.find( ((rr.train_number - 2910)/3071) ) %>
+		<td><input type="radio"></td>
+	    <td><center><%= (2910 + (@train.id.to_i*3071)) %></center></td>
+	    <td><center><%= rr.departure %></center></td>
+	    <td><center><%= rr.destination %></center></td>
+	    <td><center><%= rr.d_time %></center></td>
+	    <td><center><%= @train.model %></center></td>
+
+	 </tr>   	
+<% end %>

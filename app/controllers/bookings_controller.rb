@@ -4,9 +4,9 @@ class BookingsController < ApplicationController
   # befor_action :set_booking, only: [:show, :edit, :update, :destroy]
 
   def choose 
-    @train = Train.find(params[:train_id])
+    @atop = Stop.find(params[:stop_id])
     @rail_route = RailRoute.find(params[:railroute_id])
-    
+
   end
 
 
