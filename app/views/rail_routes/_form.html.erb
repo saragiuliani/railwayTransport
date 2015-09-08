@@ -11,31 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field" class="field" style="color:FireBrick">
-    <%= f.label :train_number %><br />
-    <%= f.number_field :train_number %>
-  </div>
-
-  <div class="field" class="field" style="color:FireBrick">
+  <div class="field">
     <%= f.label :departure %><br />
     <%= f.text_field :departure %>
   </div>
-</br>
-  <div class="field" class="field" style="color:FireBrick">
+  <div class="field">
     <%= f.label :destination %><br />
     <%= f.text_field :destination %>
   </div>
-  </br>
-  <div class="field" class="field" style="color:FireBrick">
+  
+  <div class="field">
     <%= f.label :d_time %><br />
     <%= f.time_select :d_time %>
   </div>
-  </br>
-  <div class="field" class="field" style="color:FireBrick">
+
+  <div class="field">
     <%= f.label :a_time %><br />
     <%= f.time_select :a_time %>
   </div>
-  </br>
+  <div class="field" style="color:FireBrick">
+    <label for="id_train">Train</label><br />
+    <select name="rail_route[id_train]">
+    <% Train.find_each do |train| %>
+      <option><%= train.id %></option>
+    <% end %>
+    </select>
+  
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

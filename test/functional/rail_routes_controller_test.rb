@@ -18,7 +18,7 @@ class RailRoutesControllerTest < ActionController::TestCase
 
   test "should create rail_route" do
     assert_difference('RailRoute.count') do
-      post :create, rail_route: { a_time: @rail_route.a_time, d_time: @rail_route.d_time, departure: @rail_route.departure, destination: @rail_route.destination }
+      post :create, rail_route: { a_time: @rail_route.a_time, d_time: @rail_route.d_time, departure: @rail_route.departure, destination: @rail_route.destination, id_train: @rail_route.id_train }
     end
 
     assert_redirected_to rail_route_path(assigns(:rail_route))
@@ -35,7 +35,7 @@ class RailRoutesControllerTest < ActionController::TestCase
   end
 
   test "should update rail_route" do
-    put :update, id: @rail_route, rail_route: { a_time: @rail_route.a_time, d_time: @rail_route.d_time, departure: @rail_route.departure, destination: @rail_route.destination }
+    put :update, id: @rail_route, rail_route: { a_time: @rail_route.a_time, d_time: @rail_route.d_time, departure: @rail_route.departure, destination: @rail_route.destination, id_train: @rail_route.id_train }
     assert_redirected_to rail_route_path(assigns(:rail_route))
   end
 

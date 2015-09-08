@@ -10,6 +10,13 @@
       </ul>
     </div>
   <% end %>
+  <div class="field" style="color:FireBrick">
+    <label for="id_rail_route">RailRoute</label><br />
+    <select name="stop[id_rail_route]">
+    <% RailRoute.find_each do |rr| %>
+      <option><%= rr.id %></option>
+    <% end %>
+    </select>
 
   <div class="field">
     <%= f.label :city %><br />
@@ -19,6 +26,10 @@
     <%= f.label :a_time %><br />
     <%= f.time_select :a_time %>
   </div>
+
+  
+
+
   <div class="actions">
     <%= f.submit %>
   </div>

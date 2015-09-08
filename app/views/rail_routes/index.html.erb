@@ -19,7 +19,7 @@
       <td><center><%= rail_route.destination %></center></td>
       <td><center><%= rail_route.d_time.strftime("%H:%M") %></center></td>
       <td><center><%= rail_route.a_time.strftime("%H:%M") %></center></td>
-      <td><center><%= rail_route.train_number %></center></td>
+      <td><center><%= rail_route.id_train %></center></td>
       <td><%= link_to 'Show', rail_route %></center></td>
       <% if current_user.present? && current_user.is_admin? %>
         <td><%= link_to 'Edit', edit_rail_route_path(rail_route) %></td>

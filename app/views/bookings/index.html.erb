@@ -1,8 +1,9 @@
 </br>
 </br>
 <%= link_to "HOME", home_path %>
-<h1 style="color:FireBrick">Listing bookings</h1>
 <% if current_user.present? %>
+
+  <h1 style="color:FireBrick">Listing bookings</h1>
 
   <table>
     <tr style="color:FireBrick">
@@ -18,8 +19,7 @@
     </tr>
 
   <% @bookings.each do |booking| %>
-    <% if ((23910 + (current_user.id.to_i*30471)) == booking.user_id) | (current_user.is_admin?) %> 
-
+    <% if (booking.user_id == current_user.id) | current_user.is_admin? %>
       <tr>
         <td><center><%= booking.user_id %></center></td>
         <td><center><%= booking.date %></center></td>
@@ -28,18 +28,17 @@
         <td><center><%= booking.seats_class %></center></td>
         <td><center><%= booking.n_people %></center></td>
         <td><%= link_to 'Show', booking %></td>
-        <% if (booking.date > (Time.now + 14400)) | current_user.is_admin? %>
-          <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
-          <td><%= button_to "Delete", booking, :method=>:delete, :class=>:destroy, data: { confirm: 'Are you sure?' }  %></td>
-        <% end %>
+        <td><%= link_to 'Edit', edit_booking_path(booking) %></td>
+        <td><%= button_to "Delete", booking, :method=>:delete, :class=>:destroy, data: { confirm: 'Are you sure?' }  %></td>
+        
       </tr>
-    <% end %>
-  <% end %>
+    <%end
+   end %>
   </table>
 
   <br />
 
   <%= link_to 'New Booking', new_booking_path %>
 <% else %>
-  <h1 style="color:FireBrick">denied access</h1>
+  <h1 style="color:FireBrick">DENIED ACCESS</h1>
 <% end %>

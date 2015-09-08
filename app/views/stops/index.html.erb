@@ -5,6 +5,7 @@
 
 <table>
   <tr>
+    <th style="color:FireBrick">| RailRoute |</th>
     <th style="color:FireBrick">| City |</th>
     <th style="color:FireBrick">| Arrival time |</th>
     <th></th>
@@ -14,12 +15,13 @@
 
 <% @stops.each do |stop| %>
   <tr>
-    <td><%= stop.city %></td>
-    <td><%= stop.a_time %></td>
+    <td><center><%= stop.id_rail_route %></center></td>
+    <td><center><%= stop.city %></center></td>
+    <td><center><%= stop.a_time.strftime("%H:%M") %></center></td>
     <td><%= link_to 'Show', stop %></td>
     <% if current_user.present? && current_user.is_admin? %>
       <td><%= link_to 'Edit', edit_stop_path(stop) %></td>
-      <td><%= link_to 'Destroy', stop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      <td><%= button_to 'Destroy', stop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
   </tr>
 <% end %>

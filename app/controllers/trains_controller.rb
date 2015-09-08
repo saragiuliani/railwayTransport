@@ -25,7 +25,7 @@ class TrainsController < ApplicationController
   # GET /trains/new.json
   def new
     @train = Train.new
-
+    
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @train }
@@ -74,12 +74,7 @@ class TrainsController < ApplicationController
   # DELETE /trains/1.json
   def destroy
     @train = Train.find(params[:id])
-    @railroutes = RailRoute.where("train_number = ?", (2910 + (@train.id.to_i*3071)))
-    @railroutes.each do |rr|
-      @rail = RailRoute.find(rr.id)
-      @rail.destroy
-    end
-    @train.destroy
+      @train.destroy
 
     respond_to do |format|
       format.html { redirect_to trains_url }

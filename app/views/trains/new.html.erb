@@ -1,11 +1,14 @@
 </br>
 <font size="3"> <%= link_to "HOME", home_path %> </font>
-<h1  style="color:FireBrick">New Train</h1>
+
 <% if current_user.present? && current_user.is_admin? %>
+	<h1  style="color:FireBrick">New Train</h1>
 
-	<%= render 'form' %>
 
-	<%= link_to 'Back', trains_path %>
+		<%= render 'form' %>
+
+		<%= link_to 'Back', trains_path %>
 <% else %>
-	<h1 style="color:FireBrick">denied access</h1>
+
+	<h1  style="color:FireBrick">DENIED ACCESS</h1>
 <% end %>

@@ -15,7 +15,6 @@
   <div class="field" style="color:FireBrick">
     <%= f.label :date %><br />
     <%= f.datetime_select :date %>
-  </div>
   <br>
 
   <div class="field" style="color:FireBrick">
@@ -38,12 +37,35 @@
     </select>
   
   </div>
-  </div>
 </br>
 
+
+<div class="field" style="color:FireBrick">
+    <label for="seat_class">Seats</label> <br />
+    <select name="booking[seats_class]">
+      <option selected>1</option>
+      <option>2</option>
+    </select>
+  </div>
+
+   </br>
+  <div class="field" style="color:FireBrick">
+    <label for="n_people">People</label> <br />
+    <select name="booking[n_people]">
+      <option selected>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+      <option>6</option>
+      <option>7</option>
+      <option>8</option>
+      <option>9</option>
+    </select>
+  </div>
+
     </br>
-      <div class="actions">
-        <%= link_to 'Choose your train', choose_path(:stop_id => "TRENOPROVA", :railroute_id => "RRPROVA") %>
-       <!-- <%= f.submit %> -->
-      </div>
+  <div class="actions">
+   <%= f.submit %> 
+  </div>
 <% end %>

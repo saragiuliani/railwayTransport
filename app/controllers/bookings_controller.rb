@@ -3,12 +3,6 @@ class BookingsController < ApplicationController
   # GET /bookings.json
   # befor_action :set_booking, only: [:show, :edit, :update, :destroy]
 
-  def choose 
-    @atop = Stop.find(params[:stop_id])
-    @rail_route = RailRoute.find(params[:railroute_id])
-
-  end
-
 
   def index
     @bookings = Booking.all
@@ -50,10 +44,8 @@ class BookingsController < ApplicationController
   # POST /bookings.json
   def create
     @booking = Booking.new(params[:booking])
-    @booking.user_id = (23910 + (current_user.id.to_i*30471))
-    @booking.user_email = current_user.email
+    @booking.user_id = current_user.id
     
-
     respond_to do |format|
       if @booking.save
         format.html { redirect_to @booking } # , notice: 'Booking was successfully created.' }
@@ -85,7 +77,10 @@ class BookingsController < ApplicationController
   # DELETE /bookings/1.json
   def destroy
     @booking = Booking.find(params[:id])
-    @booking.destroy
+    if (current_user.is_admin? | current_user.id = @booking.user)
+      @booking.destroy
+    end
+    
 
     respond_to do |format|
       format.html { redirect_to bookings_url} #, notice: 'Booking was successfully destroy'}

@@ -18,7 +18,7 @@
       <th></th>
     </tr>
   <% else %>
-    <h1 style="color:FireBrick">Your info</h1>
+    <h1 style="color:FireBrick">Your informations</h1>
      <table>
     <tr>
       <th style="color:FireBrick">| User - card |</th>
@@ -38,9 +38,9 @@
     <tr>
 
       <% if (current_user.id == user.id) | current_user.is_admin? %>
-        <td><%= (23910 + (user.id.to_i*30471))  %></td>
-        <td><%= user.email %></td>
-        <td><%= user.registration_date %></td>
+        <td><center><%= (23910 + (user.id.to_i*30471))  %></center></td>
+        <td><center><%= user.email %></center></td>
+        <td><center><%= user.registration_date %></center></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to "Delete", user, :method=>:delete, :class=>:destroy, data: { confirm: 'Are you sure?' } %></td>

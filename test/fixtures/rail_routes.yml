@@ -3,11 +3,13 @@
 one:
   departure: MyString
   destination: MyString
-  d_time: 2015-07-13 15:17:30
-  a_time: 2015-07-13 15:17:30
+  a_time: 2015-09-04 15:50:11
+  d_time: 2015-09-04 15:50:11
+  id_train: 1
 
 two:
   departure: MyString
   destination: MyString
-  d_time: 2015-07-13 15:17:30
-  a_time: 2015-07-13 15:17:30
+  a_time: 2015-09-04 15:50:11
+  d_time: 2015-09-04 15:50:11
+  id_train: 1

@@ -1,9 +1,9 @@
 RailwayTransport::Application.routes.draw do
 
+  resources :rail_routes
+
+
   resources :railroutes_trains
-
-
-  resources :railroutes_stops
 
 
   resources :rbs
@@ -23,6 +23,7 @@ RailwayTransport::Application.routes.draw do
   get 'help' => 'static_pages#help'
   get 'about' => 'static_pages#about'
   get 'choose' => 'bookings#choose'
+  get 'temp' => 'railroutes_stops#temp'
   #get 'booking' => 'bookings#new'
   #get 'rail_route' => 'rail_routes#new'
 

@@ -95,6 +95,8 @@ GEM
     uglifier (2.7.1)
       execjs (>= 0.3.0)
       json (>= 1.8.0)
+    validates_overlap (0.5.2)
+      rails (>= 3.0.0)
 
 PLATFORMS
   ruby
@@ -108,3 +110,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   sqlite3
   uglifier (>= 1.0.3)
+  validates_overlap
