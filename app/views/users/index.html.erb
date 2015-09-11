@@ -38,12 +38,12 @@
     <tr>
 
       <% if (current_user.id == user.id) | current_user.is_admin? %>
-        <td><center><%= (23910 + (user.id.to_i*30471))  %></center></td>
+        <td><center><%= user.id %></center></td>
         <td><center><%= user.email %></center></td>
         <td><center><%= user.registration_date %></center></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to "Delete", user, :method=>:delete, :class=>:destroy, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to "Delete", user, :method=>:delete, :class=>:destroy, data: { confirm: 'Are you sure?' } %></td>
       <% end %>
 
     </tr>

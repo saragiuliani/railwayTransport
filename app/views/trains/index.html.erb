@@ -16,7 +16,7 @@
 
 <% @trains.each do |train| %>
   <tr>
-    <td><center><%= (2910 + (train.id.to_i*3071)) %></center></td>
+    <td><center><%= train.id %></center></td>
     <td><center><%= train.model %></td>
     <td><center><%= train.firstclass_seats %></center></td>
     <td><center><%= train.secondclass_seats %></center></td>

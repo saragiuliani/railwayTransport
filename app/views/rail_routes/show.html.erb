@@ -17,9 +17,14 @@
   <b><font size="4" style="color:FireBrick">Stops:</font></b>
   <br>
   
-    <% Stop.where("stops.id_rail_route = ? ", @rail_route.id).each do |s| %>
-    <%= s.city %> <font size="3" style="color:FireBrick"> AT </font>
-    <%= s.a_time.strftime("%H:%M") %> 
+    <% stops = Stop.all(:order => "a_time").each do |s|  %>
+     <% if (s.id_rail_route == @rail_route.id) %>
+     
+        <%= s.city %> <font size="3" style="color:FireBrick"> AT </font>
+        <%= s.a_time.strftime("%H:%M") %> 
+        <br>
+      <% end %>
+    
   <% end %>
 </p>
 

@@ -1,5 +1,5 @@
 <font size="3"> <%= link_to "HOME", home_path %> </font>
-<% if (booking.user_id == current_user.id) | current_user.is_admin? %>
+<% if (@booking.user_id == current_user.id) | current_user.is_admin? %>
   <p>
     <b>User:</b>
     <%= @booking.user_id %>
@@ -47,6 +47,5 @@
 
 
     <%= link_to 'Edit', edit_booking_path(@booking) %> |
-<% else %>
-  <%= link_to 'Go to booking list', bookings_path %>
 <% end %>
+  <%= link_to 'Back', bookings_path %>

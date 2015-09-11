@@ -1,7 +1,7 @@
 <% if (current_user.present? && current_user.is_admin?) | (current_user.present? && current_user.id == @user.id) %>
 	<p>
 	  <b>User - card:</b>
-	  <%= (23910 + (@user.id.to_i*30471)) %>
+	  <%= @user.id %>
 	</p>
 
 	<p>

@@ -20,7 +20,7 @@
   <div class="field" style="color:FireBrick">
     <label for="trip_departure">Departure</label><br />
     <select name="booking[trip_departure]">
-    <% @stops = Stop.find_each do |dep| %>
+    <% Stop.all(:order => "city").uniq{|x| x.city}.each do |dep| %>
       <option><%= dep.city %></option>
     <% end %>
     </select>
@@ -31,7 +31,7 @@
   <div class="field" style="color:FireBrick">
     <label for="trip_destination">Destination</label><br />
     <select name="booking[trip_destination]">
-    <% Stop.find_each do |dest| %>
+    <% Stop.all(:order => "city").uniq{|x| x.city}.each do |dest| %>
       <option><%= dest.city %></option>
     <% end %>
     </select>

@@ -7,6 +7,7 @@
 
   <table>
     <tr style="color:FireBrick">
+      <th>| User - email |</th>
       <th>| User - card |</th>
       <th>| Date |</th>
       <th>| Trip departure |</th>
@@ -19,8 +20,12 @@
     </tr>
 
   <% @bookings.each do |booking| %>
-    <% if (booking.user_id == current_user.id) | current_user.is_admin? %>
+    <% if (booking.user_id == current_user.id) | current_user.is_admin? 
+        user = User.find(booking.user_id)
+      %>
+
       <tr>
+        <td><center><%= user.email %></center></td>
         <td><center><%= booking.user_id %></center></td>
         <td><center><%= booking.date %></center></td>
         <td><center><%= booking.trip_departure %></center></td>

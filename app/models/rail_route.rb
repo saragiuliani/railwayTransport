@@ -6,6 +6,14 @@ class SameRailrouteValidator < ActiveModel::Validator
   end
 end
 
+class TimeValidator < ActiveModel::Validator
+  def validate(record)
+    if record.wrongRoute?
+      record.errors[:base] << "ERROR: You can't timetravel"
+    end
+  end
+end
+
 
 class RailRoute < ActiveRecord::Base
   attr_accessible :a_time, :d_time, :departure, :destination, :id_train
@@ -16,6 +24,7 @@ class RailRoute < ActiveRecord::Base
   validates_uniqueness_of :departure, :scope => [:destination, :d_time]
   validates :departure, :destination, :d_time, :a_time, :id_train, presence: true
   validates_with SameRailrouteValidator
+  validates_with TimeValidator
 
   def intersection?
   	@rail_route = RailRoute.all
@@ -29,10 +38,10 @@ class RailRoute < ActiveRecord::Base
   	return false
   end
 
-  def railroute?
-    if !(current_user.is_admin?)
+  def wrongRoute?
+    if(d_time >= a_time)
       return true
-    else 
+    else
       return false
     end
   end

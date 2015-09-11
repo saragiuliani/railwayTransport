@@ -1,7 +1,7 @@
 class SameStopValidator < ActiveModel::Validator
 	def validate(record)
     if record.halfway?
-      record.errors[:base] << 'ERROR: halfay not included in the rail route'
+      record.errors[:base] << 'ERROR: halfway not included in the rail route'
     end
   end
 end
@@ -14,6 +14,7 @@ class Stop < ActiveRecord::Base
 
   
   def halfway?
+    @stop = Stop.all
   	@rr = RailRoute.find(id_rail_route)
   	if !((@rr.d_time.hour*60+@rr.d_time.min..@rr.a_time.hour*60+@rr.a_time.min).include?(a_time.hour*60+a_time.min))
   		return true

@@ -1,7 +1,7 @@
 class NoDeletableValidator < ActiveModel::Validator
   def validate(record)
     if record.notDeletable?
-      record.errors[:base] << 'ERROR: You can not delete this booking'
+      record.errors[:base] << "ERROR: You can't delete this booking"
     end
   end
 end
@@ -9,7 +9,7 @@ end
 class UnpossibleValidator < ActiveModel::Validator
   def validate(record)
     if record.notPossible?
-      record.errors[:base] << 'ERROR: You can not book this booking' 
+      record.errors[:base] << "ERROR: You can't book this booking" 
     end
   end
 end
@@ -27,7 +27,6 @@ class Booking < ActiveRecord::Base
   validates_uniqueness_of :user_id, :scope => [:date, :trip_departure], :message => "You can not booking two trip with the same departure and date"
   validates_with NoDeletableValidator, on: :delete
   validates_with UnpossibleValidator
-  #validates_with NoSeatsAvailableValidator
 
   def notDeletable?
     if !(Time.now+1440 < date)
@@ -37,22 +36,21 @@ class Booking < ActiveRecord::Base
   end
 
   def notPossible?
-    @stops = Stop.all
-    @stops.each do |s1|
-      if(s1.city == trip_departure)
+    @stops = Stop.all(:order => "a_time").each do |s1|
+      if(s1.city == trip_departure && (date.hour*60+date.min <= s1.a_time.hour*60+s1.a_time.min))
         @rr = RailRoute.find(s1.id_rail_route)
         @sts = Stop.where("id_rail_route = ?", @rr.id)
         @sts.each do |s2|
-          if(s2.city == trip_destination && (date.hour*60+date.min <= s1.a_time.hour*60+s1.a_time.min) && s1.a_time < s2.a_time)
-              update_attribute(:id_rail_route, @rr.id.to_i)
-              ## UNAVAILABLESEATS
-              if !(unavailableSeats?(@rr.id))
-                return false
-              end
+          if(s2.city == trip_destination && s1.a_time < s2.a_time)
+            update_attribute(:id_rail_route, @rr.id.to_i)
 
-              
-            #end
-            #return false
+            update_attribute(:date, date.strftime("%Y-%m-%d ") << @rr.d_time.strftime("%H:%M:%S"))
+            if !(unavailableSeats?(@rr.id))
+              return false
+            else
+              return true
+            end
+
           end
         end
       end
@@ -63,15 +61,12 @@ class Booking < ActiveRecord::Base
   
    def unavailableSeats?(rr_id)
 
-    temp = Time.new(date.strftime("%H : %M : %D"))
-
-    bookings = Booking.where("id_rail_route = ? AND date = ?", rr_id, temp)
-
     train = Train.find(RailRoute.find(rr_id).id_train)
     seats1 = 0
     seats2 = 0
 
-
+    bookings = Booking.where("id_rail_route = ? AND date = ?", rr_id, date.strftime("%Y-%m-%d ") << @rr.d_time.strftime("%H:%M:%S"))
+    
     bookings.each do |b|
       if (b.seats_class == 1)
         seats1 = seats1 + b.n_people
@@ -79,8 +74,7 @@ class Booking < ActiveRecord::Base
         seats2 = seats2 + b.n_people
       end
     end
-    
-    if(seats_class == 1 && (train.firstclass_seats >= seats1))
+    if (seats_class == 1 && (train.firstclass_seats >= seats1)) 
       return false
     else 
       if(seats_class == 2 && (train.secondclass_seats >= seats2))
@@ -89,6 +83,4 @@ class Booking < ActiveRecord::Base
     end
     return true
   end
-
-
 end
